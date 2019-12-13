@@ -27,6 +27,7 @@ public class CountExample2 {
     public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) throws InterruptedException {
+        count.incrementAndGet();
         //线程池
         ExecutorService executorService = Executors.newCachedThreadPool();
 
