@@ -41,5 +41,6 @@ public class AtomicExample3 {
 
     private static void add() {
         count.increment();
+        count.longValue();
     }
 }

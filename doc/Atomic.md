@@ -96,11 +96,30 @@ compareAndSwapInt()方法的第一个参数（var1）是当前的对象，就是
 Atomic包下其他的类如AtomicLong等的实现原理基本与上述一样。
 
 #LongAdder
-这里再介绍下LongAdder这个类，通过上述的分析，我们已经知道了AtomicLong使用CAS：在一个死循环内不断尝试修改目标值直到修改成功。如果在竞争不激烈的情况下，它修改成功概率很高。反之，如果在竞争激烈的情况下，修改失败的概率会很高，它就会进行多次的循环尝试，因此性能会受到一些影响。
 
-对于普通类型的long和double变量，jvm允许将64位的读操作或写操作拆成两个32位的操作。LongAdder的核心思想是将热点数据分离，它可以将AtomicLong内部核心数据value分离成一个数组，每个线程访问时通过hash等算法映射到其中一个数字进行计数。而最终的计数结果则为这个数组的求和累加，其中热点数据value，它会被分离成多个单元的cell，每个cell独自维护内部的值,当前对象的实际值由所有的cell累计合成。这样,热点就进行了有效的分离,提高了并行度。LongAdder相当于在AtomicLong的基础上将单点的更新压力分散到各个节点上，在低并发的时候对base的直接更新可以很好的保障跟Atomic的性能基本一致。而在高并发的时候，通过分散提高了性能。但是如果在统计的时候有并发更新，可能会导致统计的数据有误差。
+为什么要引入LongAdder？
+我们知道，AtomicLong是利用了底层的CAS操作来提供并发性的，比如addAndGet方法：
+
+```java
+
+public class AtomicLong extends Number implements java.io.Serializable {
+
+ public final long getAndIncrement() {
+        return unsafe.getAndAddLong(this, valueOffset, 1L);
+    }
+}
+```
+
+    上述方法调用了Unsafe类的getAndAddLong方法，该方法是个native方法，它的逻辑是采用自旋的方式不断更新目标值，直到更新成功。
+
+   在并发量较低的环境下，线程冲突的概率比较小，自旋的次数不会很多。但是，高并发环境下，N个线程同时进行自旋操作，会出现大量失败并不断自旋的情况，
+此时AtomicLong的自旋会成为瓶颈。
+
+这就是LongAdder引入的初衷——解决高并发环境下AtomicLong的自旋瓶颈问题。
 
 #AtomicReference  
+    而AtomicReference提供了以无锁方式访问共享资源的能力，看看如何通过AtomicReference保证线程安全，来看个具体的例子：
+    
 ##compareAndSet
 ```java
 @Slf4j
