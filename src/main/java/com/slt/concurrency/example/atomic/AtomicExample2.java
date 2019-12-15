@@ -1,4 +1,4 @@
-package com.slt.concurrency.example.count;
+package com.slt.concurrency.example.atomic;
 
 import lombok.extern.slf4j.Slf4j;
 
