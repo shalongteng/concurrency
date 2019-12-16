@@ -1,0 +1,1 @@
+#线程封闭---》jdbc connection对象
