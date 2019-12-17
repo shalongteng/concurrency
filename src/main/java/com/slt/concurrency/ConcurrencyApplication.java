@@ -23,7 +23,7 @@ public class ConcurrencyApplication extends WebMvcConfigurerAdapter {
         registrationBean.addUrlPatterns("/threadLocal/*");
         return registrationBean;
     }
-
+    //TODO spring boot Interceptor 用法
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new HttpInterceptor()).addPathPatterns("/**");

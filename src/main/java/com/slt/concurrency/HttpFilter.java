@@ -19,6 +19,8 @@ public class HttpFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         log.info("do filter, {}, {}", Thread.currentThread().getId(), request.getServletPath());
         RequestHolder.add(Thread.currentThread().getId());
+        //第二个 会覆盖
+        RequestHolder.add(666L);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
