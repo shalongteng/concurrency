@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 public class HttpFilter implements Filter {
@@ -26,6 +28,16 @@ public class HttpFilter implements Filter {
 
     @Override
     public void destroy() {
+
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list  = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        System.out.println(list);
+        list.remove(1);
+        System.out.println(list);
 
     }
 }
