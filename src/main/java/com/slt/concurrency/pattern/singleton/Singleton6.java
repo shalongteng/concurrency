@@ -1,4 +1,4 @@
-package com.slt.concurrency.example.singleton;
+package com.slt.concurrency.pattern.singleton;
 /**
  *@Description 饿汉模式
  *@Author

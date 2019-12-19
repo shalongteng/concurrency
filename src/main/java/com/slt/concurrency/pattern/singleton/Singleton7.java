@@ -1,4 +1,4 @@
-package com.slt.concurrency.example.singleton;
+package com.slt.concurrency.pattern.singleton;
 /**
  *@Description 懒汉模式--》枚举模式
  *@Author
