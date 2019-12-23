@@ -5,6 +5,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 测试 最好使用基准测试
+ * URL：https://blog.csdn.net/TheLudlows/article/details/88423216
+ */
 public class T01_ConcurrentMap {
 
     public static void main(String[] args) throws InterruptedException {
