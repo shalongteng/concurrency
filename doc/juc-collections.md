@@ -1,8 +1,36 @@
 #不安全的容器--》为什么不安全？
 
 #同步容器
+##ArrayList->Vector
+##Collections.synchronizedList(Lists.newArrayList())
+在并发编程当中，虽然同步容器类是线程安全的，但是在某些情况下可能需要额外的客户端加锁来保护复合操作。如下面一段代码：
+public static Object getLast(Vector list) {
+    int lastIndex = list.size() - 1;
+    return list.get(lastIndex);
+}
 
-#并发容器 juc
+public static void deleteLast(Vector list) {
+    int lastIndex = list.size() - 1;
+    list.remove(lastIndex);
+}
+虽然Vector是线程安全的，但是获取Vector大小与获取/删除之间没有锁保护，当获得Vector大笑之后，如另外一个线程删除了Vector中的最末尾位置的元素，
+则每个函数的最后一句代码执行将报错。因此，对于复合操作，需要在符合操作上用锁来保证操作的原子性：
+public static Object getLast(Vector list) {
+    synchronized (list) {
+        int lastIndex = list.size() - 1;
+        return list.get(lastIndex);
+    }
+}
+
+public static void deleteLast(Vector list) {
+    synchronized (list) {
+        int lastIndex = list.size() - 1;
+        list.remove(lastIndex);
+    }
+}
+##Collections.synchronizedSet(Sets.newHashSet())
+
+#并发容器 
 ##ArrayList->copyOnWriteArrayList
 写时复制容器，即copy-on-write,在多线程环境下，写时效率低，读时效率高，适合写少读多的环境。
 

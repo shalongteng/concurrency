@@ -23,6 +23,12 @@ public class ThreadPoolExample4 {
 //            }
 //        }, 3, TimeUnit.SECONDS);
 
+        /**
+         * command：执行线程
+         * initialDelay：初始化延时
+         * period：两次开始执行最小间隔时间
+         * unit：计时单位
+         */
         executorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

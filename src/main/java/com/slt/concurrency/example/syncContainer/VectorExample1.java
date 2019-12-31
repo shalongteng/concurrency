@@ -3,6 +3,8 @@ package com.slt.concurrency.example.syncContainer;
 import com.slt.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.CountDownLatch;
@@ -21,6 +23,9 @@ public class VectorExample1 {
     public static int threadTotal = 200;
 
     private static List<Integer> list = new Vector<>();
+
+//    private static List<Integer> list = new ArrayList<>();
+
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
