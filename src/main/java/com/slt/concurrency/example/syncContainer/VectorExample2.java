@@ -11,9 +11,7 @@ public class VectorExample2 {
     private static Vector<Integer> vector = new Vector<>();
     //线程安全的容器，因为调用顺序，也可能不安全
     public static void main(String[] args) {
-
         while (true) {
-
             for (int i = 0; i < 10; i++) {
                 vector.add(i);
             }

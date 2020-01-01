@@ -10,7 +10,6 @@ import java.util.concurrent.*;
 @Slf4j
 @NotThreadSafe
 public class CopyOnWriteArrayListExample {
-
     // 请求总数
     public static int clientTotal = 5000;
 
