@@ -60,8 +60,11 @@ ConcurrentHashMap使用了快速失败迭代器（fast-fail iterator）弱一致
 取而代之的是在改变时 【实例化出新的数据】从而不影响原有的数据，iterator完成后再将头指针替换为新的数据，
 这样iterator线程可以使用原来老的数据，而写线程也可以并发的完成改变，这保证了多个线程并发执行的连续性和扩展性
 
-##TreeMap->ConcurrentSkipListMap
-ConcurrentSkipListMap是通过跳表实现的，而TreeMap是通过红黑树实现的。
+##ConcurrentMap->ConcurrentSkipListMap
+ConcurrentSkipListMap是有序的哈希表，适用于高并发的场景。
+
+跳表（SkipList）是一种随机化的数据结构，通过“空间来换取时间”的一个算法，建立多级索引，
+实现以二分查找遍历一个有序链表。时间复杂度等同于红黑树，O(log n)。但实现却远远比红黑树要简单，
 
 #BlockingQueue
 取元素时，如果队列为空则等待；存元素时，如果没有空间则等待；
