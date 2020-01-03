@@ -19,8 +19,5 @@ CyclicBarrier可以使一定数量的线程反复地在栅栏位置处汇集。�
 如果是，执行barrierAction对象的Runnable方法，然后将锁的条件队列中的所有线程放入锁等待队列中，
 这些线程会依次的获取锁、释放锁。
 
-#reentrantlock
-
-#condition
 
 #futuretask

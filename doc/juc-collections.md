@@ -1,6 +1,6 @@
-#不安全的容器--》为什么不安全？
+#1、不安全的容器--》为什么不安全？
 
-#同步容器
+#2、同步容器
 ##Collections.synchronizedList(Lists.newArrayList())-->Vector
 ##Collections.synchronizedSet(Sets.newHashSet())
 ##Collections.synchronizedMap(new HashMap<>())-->hashtable
@@ -30,7 +30,7 @@ public static void deleteLast(Vector list) {
     }
 }
 
-#并发容器 
+#3、并发容器 
 大致分四种，
 ##CopyOnWrite容器->copyOnWriteArrayList
 每当修改容器是都会复制底层数组，这需要一定的开销，特别是当容器的规模较大时。
@@ -66,5 +66,22 @@ ConcurrentSkipListMap是有序的哈希表，适用于高并发的场景。
 跳表（SkipList）是一种随机化的数据结构，通过“空间来换取时间”的一个算法，建立多级索引，
 实现以二分查找遍历一个有序链表。时间复杂度等同于红黑树，O(log n)。但实现却远远比红黑树要简单，
 
-#BlockingQueue
-取元素时，如果队列为空则等待；存元素时，如果没有空间则等待；
+#4、BlockingQueue阻塞队列  https://www.jianshu.com/p/5d7e5b088a40
+常用阻塞队列特性总结：通过加锁实现安全地读写（size、contains函数也是加锁读），通过condition或者AtomicInteger来协调生产和消费
+阻塞队列解决的问题：在一个容量有限的仓库里面，实现满了就挂起生产线程，空了就挂起消费线程的兼顾性能和安全的数据结构
+##BlockingQueue->ArrayBlockingQueue 
+1把锁，无法并发写，2个condition，通过await、signal来实现线程调度。基于定长数组的有界队列
+
+##BlockingQueue->LinkedBlockQueue
+2把锁，支持生产、消费并发执行，但是不支持并发的生产，通过AtomicInteger和CAS来控制库存。可以指定大小，默认无界队列。
+LinkedBlockQueue内部是基于单向链表的队列，可以设置capacity来实现有界队列，也可以不设置，默认是无界队列。
+无界队列的时候，put、add、offer就是一样的啊，因为没有限制，所以插入肯定成功.
+
+
+##BlockingQueue->SynchronousQueue
+没有容量的队列，put、take成为一对儿才可以执行，否则阻塞，add和remove如果没有配对成功，直接报错。用于快速响应的业务场景
+##BlockingQueue->PriorityBlockingQueue
+有优先级的队列，插入元素实现Compare接口，内部维护了一个最小堆，一把锁，基于数组，自动扩容的无界队列
+##BlockingQueue->DelayQueue
+内部有一个PriorityBlockingQueue，最先到期的元素放在堆顶。
+里面的元素必须要实现Delayed接口

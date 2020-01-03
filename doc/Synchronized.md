@@ -6,6 +6,11 @@
 synchronized可以保证方法或者代码块在运行时，同一时刻只有一个方法可以进入到临界区，同时它还可以保证共享变量的内存可见性
 #3.synchronized的4种应用方式
 Java中每一个对象都可以作为锁，这是synchronized实现同步的基础：
+#jdk6 对它的优化
+在Java 6中对synchronized的内在机制进行了大量优化了，加入了CAS，轻量级锁和偏向锁等玩意，让它不是一上来就是一个重量级锁，
+而是随着并发程度的改变而进行相应的膨张，关于这个可以看Java锁的膨胀过程和优化 https://blog.csdn.net/timheath/article/details/71436931
+
+
 
 修饰代码块，作用于调用对象
 修饰方法，作用于调用对象
