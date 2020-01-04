@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 @Component
 public class RedisClient {
 
-    @Resource(name = "redisPool")
+//    @Resource(name = "redisPool")
     private JedisPool jedisPool;
 
     public void set(String key, String value) throws Exception {
