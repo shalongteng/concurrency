@@ -1,5 +1,5 @@
 package com.slt.concurrency.springbootThreadPool;
- 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author qjwyss
@@ -15,7 +16,7 @@ import java.util.concurrent.Executors;
  */
 @Service
 public class AsyncServiceImpl implements AsyncService {
- 
+
     private static final Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -26,6 +27,7 @@ public class AsyncServiceImpl implements AsyncService {
     public void executeAsync() {
         logger.info("start executeAsync");
         try {
+            Thread.sleep(10000);
             System.out.println("当前运行的线程名称：" + Thread.currentThread().getName());
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,5 +67,4 @@ public class AsyncServiceImpl implements AsyncService {
         }
         logger.info("end executeAsync33333333333333");
     }
- 
 }

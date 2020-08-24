@@ -1,5 +1,5 @@
 package com.slt.concurrency.springbootThreadPool;
- 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
@@ -8,16 +8,16 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
- 
+
 /**
- * @author duxuebo
+ * @author slt
  * @date 2018/10/12
  * @description 线程池配置类
  */
 @Configuration
 @EnableAsync
 public class ThreadPoolConfig {
- 
+
     @Bean
     public TaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -37,7 +37,7 @@ public class ThreadPoolConfig {
         executor.setWaitForTasksToCompleteOnShutdown(true);
         return executor;
     }
- 
- 
- 
+
+
+
 }

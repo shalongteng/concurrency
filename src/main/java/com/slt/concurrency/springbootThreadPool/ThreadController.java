@@ -1,5 +1,5 @@
 package com.slt.concurrency.springbootThreadPool;
- 
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,32 +12,33 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author qjwyss
+ * @author slt
  * @date 2018/10/12
  * @description  直接使用@Async注解，并声明线程池，即可使用多线程；
  */
 @RestController
 public class ThreadController {
- 
+
     @Autowired
     private AsyncService asyncService;
 
-    /**executeAsync executeAsync2 执行先后顺序不定
+    /**
+     * executeAsync executeAsync2 执行先后顺序不定
      *
      * @return
      */
-    @GetMapping("/sss")
-    public String sss(){
- 
+    @GetMapping("/async")
+    public String async(){
+
         //调用service层的任务
         asyncService.executeAsync();
-        //从线程池 拿到一个线程 执行executeAsync2
-        asyncService.executeAsync2();
-
-        asyncService.executeAsync3();
-
+//        //从线程池 拿到一个线程 执行executeAsync2
+//        asyncService.executeAsync2();
+//
+//        asyncService.executeAsync3();
+        System.out.println("123");
         return "OK";
     }
- 
- 
+
+
 }

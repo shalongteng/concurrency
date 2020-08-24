@@ -1,12 +1,12 @@
 package com.slt.concurrency.springbootThreadPool;
- 
+
 /**
- * @author qjwyss
+ * @author slt
  * @date 2018/10/12
  * @description
  */
 public interface AsyncService {
- 
+
     /**
      * 执行异步任务
      */
