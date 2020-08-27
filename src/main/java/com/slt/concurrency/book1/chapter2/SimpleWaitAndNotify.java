@@ -2,6 +2,7 @@ package com.slt.concurrency.book1.chapter2;
 
 /**
  * wait 和 notify 需要在synchronized 里写
+ * 也就是 wait 和 notify 需要获取对象的锁，才能调用，如果没有获取锁，会抛出IllegalMonitorStateException
  */
 public class SimpleWaitAndNotify {
     final static Object object = new Object();
@@ -28,7 +29,7 @@ public class SimpleWaitAndNotify {
                 object.notify();
 
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

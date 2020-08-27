@@ -4,17 +4,6 @@ package com.slt.concurrency.book1.chapter2;
  * Created by 13 on 2017/5/4.
  */
 public class ThreadGroupName implements Runnable {
-    /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p/>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
-     *
-     * @see Thread#run()
-     */
     @Override
     public void run() {
         String groupAndName = Thread.currentThread().getThreadGroup().getName() + "-" + Thread.currentThread().getName();
@@ -37,7 +26,9 @@ public class ThreadGroupName implements Runnable {
         System.out.println(tg.activeCount());
         Thread t3 = new Thread(tg, new ThreadGroupName(), "T3");
         t3.start();
+        //以获得活动线程的总数
         System.out.println(tg.activeCount());
+        //list（）方法可以打印这个线程组中所有的钱程信息，
         tg.list();
     }
 }

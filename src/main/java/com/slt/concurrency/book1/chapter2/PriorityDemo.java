@@ -38,8 +38,6 @@ public class PriorityDemo {
 
 
     /**
-     * �����ȼ����߳�������,���ǲ����ܱ�֤ÿ�ζ���LowPriority�����,��Դ����������»��ǻ���ȷ�����ȼ��ϸߵ��̻߳����Դ.
-     *
      * @param args
      */
     public static void main(String args[]) {

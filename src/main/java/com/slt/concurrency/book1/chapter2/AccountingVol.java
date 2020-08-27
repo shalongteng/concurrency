@@ -1,7 +1,6 @@
 package com.slt.concurrency.book1.chapter2;
 
 /**
- * Created by 13 on 2017/5/4.
  */
 public class AccountingVol implements Runnable {
     static AccountingVol instance = new AccountingVol();
@@ -10,18 +9,6 @@ public class AccountingVol implements Runnable {
     public static void increase() {
         i++;
     }
-
-    /**
-     * When an object implementing interface <code>Runnable</code> is used
-     * to create a thread, starting the thread causes the object's
-     * <code>run</code> method to be called in that separately executing
-     * thread.
-     * <p/>
-     * The general contract of the method <code>run</code> is that it may
-     * take any action whatsoever.
-     *
-     * @see Thread#run()
-     */
     @Override
     public void run() {
         for (int j = 0; j < 10000000; j++) {
@@ -30,11 +17,7 @@ public class AccountingVol implements Runnable {
     }
 
     /**
-     * ��������ͨ�������̶߳�i�����ۼӲ���,���յ���ȷ���ӦΪ20000000,����ʵ������ȴԶԶС����ȷ��ֵ,��Ϊ����߳�ͬ�¶�i����д�����ʱ,
-     * ����һ���̵߳Ľ���Ḳ������һ���̵߳Ĳ���,�̲߳���ȫ���������ֳ�ͻ.
-     *
      * @param args
-     * @throws InterruptedException
      */
     public static void main(String args[]) throws InterruptedException {
         Thread thread1 = new Thread(instance);
