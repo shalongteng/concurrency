@@ -1,6 +1,7 @@
 package com.slt.concurrency.book1.chapter2;
 
 /**
+ *
  */
 public class AccountingVol implements Runnable {
     static AccountingVol instance = new AccountingVol();
