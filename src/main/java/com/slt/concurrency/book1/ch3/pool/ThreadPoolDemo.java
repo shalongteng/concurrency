@@ -16,7 +16,6 @@ public class ThreadPoolDemo {
 			}
 		}
 	}
-
 	public static void main(String[] args) {
 		MyTask task = new MyTask();
 		ExecutorService es = Executors.newFixedThreadPool(5);

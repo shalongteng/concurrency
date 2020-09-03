@@ -21,7 +21,6 @@ public class RejectThreadPoolDemo {
 			}
 		}
 	}
-
 	public static void main(String[] args) throws InterruptedException {
 		MyTask task = new MyTask();
 		ExecutorService es = new ThreadPoolExecutor(5, 5,

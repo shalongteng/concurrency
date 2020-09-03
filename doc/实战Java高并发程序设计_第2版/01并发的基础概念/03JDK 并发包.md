@@ -88,5 +88,44 @@
                 任务，并尝试再次提交当前任务。
             • DiscardPolicy 策略 ： 该策略默默地丢弃无法处理的任务，不予任何处理。如果允许
                 任务丢失，我觉得这可能是最好的一种方案了吧！
-#2、核心线程池的内部实现
-#2、同步控制
+    4、自定义线程创建： ThreadFactory
+        使用自定义线程池可以让我们更加自由地设置线程池中所有线程的状态。
+    5、扩展线程池
+        ThreadPoolExecutor 是一个可以扩展的线程池。它提供了三个接口用来对线程池进行控制
+            beforeExecuteO 、
+            afterExecute（）
+            terminated。 
+    6、优化线程池线程数量
+        Nthreads = Ncpu× Ucpu×(1 + W/C) 
+    7、分而治之： Fork/Join 框架
+        在JDK 中 ， 给出了一个 ForkJoinPool 线程池， 
+        public <T> ForkJo工nTask<T > subrnit(ForkJoinTask<T> task)
+    7、guava 对线程池的扩展
+       1、DirectExecutor
+       1、Daemon 线程池
+        
+       1、对 Future 模式的扩展
+#3、JDK 的并发容器
+    1、线程安全的 HashMap
+        Collections.synchronizedMap()
+        ConcurrentHashMap
+    1、List 的线程安全
+        Vector
+        Collections. synchronizedList（）
+    1、高效读写的队列 ：ConcurrentlinkedQueue 类
+    
+    1、高效读取：不变模式下的 CopyOnWriteArraylist 类
+        所谓 CopyOnWrite 就是在写入操作时，进行一次 自我复制    
+    5、数据共享通道： BlockingQueue
+        多个线程间的数据共享呢？比如，线程 A 希望给线程 B 发一条消息，用什么方式告知线程 B 是比较合理的呢 ？
+    6、数据共享通道： BlockingQueue
+        BlockingQueue 之所以适合作为数据共享的通道
+        
+        ArrayBlockingQueue 类和 
+            基于数组实现的，更适合做有界队列
+        LinkedBlockingQueue ，无界队列   
+    7、随机数据结构：跳表（ Skiplist)
+        ConcurrentSkipListMap
+        对跳表的插入和删除只需要对整个数据结构的局部进行操作即可 。
+        在高井发的情况下，你会需要一个全局锁来保证整个平衡树的线程安全。而对于跳表，你只 需要部分锁即可 。
+#4、使用 JMH 进行性能测试
