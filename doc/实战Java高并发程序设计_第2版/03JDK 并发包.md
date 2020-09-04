@@ -129,3 +129,29 @@
         对跳表的插入和删除只需要对整个数据结构的局部进行操作即可 。
         在高井发的情况下，你会需要一个全局锁来保证整个平衡树的线程安全。而对于跳表，你只 需要部分锁即可 。
 #4、使用 JMH 进行性能测试
+    1、什么是 JMH
+        JMH（Java Microbenchmark Harness ）是一个在 OpenJDK 项目中发布的，专门用于性能测试的框架，
+    1、JMH 的基本概念和配置
+        1. 模式（ Mode)
+            • Throughput ： 整体吞吐量，表示 1 秒内可以执行多少次调用。
+            • AverageTime：调用的平均时间，指每一次调用所需要的时间 。
+            • SampleTime：随机取样，最后输出取样结果的分布，例如“ 99%的调用在 xxx 毫秒以内，99 .99%的调用在 xxx 毫秒以内”。
+            • SingleShotTime ： 以上模式都是默认一次 Iteration 是 l 秒，唯有 SingleShotTime 只运
+                行一次。往往同时把 warmup 次数设为 0，用于测试冷启动时的性能 。
+        2 . 迭代（ Iteration )
+            迭代是 JMH 的一次测量单位 。 在大部分测量模式下， 一次选代表示 1 秒 。 
+        3. 预热（ Warmup)
+            同一个方法在jit 编译前后的时间将会不同
+        4 状态（ State)
+            线程范围
+            基准测试范围（ Benchmark ），即多个线程共享一个实例 。
+        5. 配置类（ Options/OptionsBuilder )
+        
+        
+    1、理解 JMH 中的 Mode
+    1、理解 JMH 中的 State
+        JMH 中的 S tate 可以理解为变量或者数据模型的作用域，通常包括整个 Benchmark 级别
+        和 Thread 线程级别。
+    1、CopyOnWriteArraylist 类与 ConcurrentlinkedQueue 类
+        当元素总量不大时，在绝大部分场景中，
+        CopyOnWriteArrayList 类要优于 ConcurrentLinkedQueue 类 。
