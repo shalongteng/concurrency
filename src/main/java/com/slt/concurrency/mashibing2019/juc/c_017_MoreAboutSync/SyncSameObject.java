@@ -8,7 +8,10 @@ package com.slt.concurrency.mashibing2019.juc.c_017_MoreAboutSync;
 
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * 锁的对象属性发生改变不影响锁
+ * 但是对象本身不能变为别的对象
+ */
 public class SyncSameObject {
 	
 	/*final*/ Object o = new Object();
@@ -40,8 +43,9 @@ public class SyncSameObject {
 		}
 		//创建第二个线程
 		Thread t2 = new Thread(t::m, "t2");
-		
-		t.o = new Object(); //锁对象发生改变，所以t2线程得以执行，如果注释掉这句话，线程2将永远得不到执行机会
+
+		//锁对象发生改变，所以t2线程得以执行，如果注释掉这句话，线程2将永远得不到执行机会
+		t.o = new Object();
 		
 		t2.start();
 		

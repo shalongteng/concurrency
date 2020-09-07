@@ -5,6 +5,9 @@
 
 package com.slt.concurrency.mashibing2019.juc.c_007;
 
+/**
+ * 同步方法和非同步方法是否可以同时调用。
+ */
 public class T {
 
 	public synchronized void m1() { 

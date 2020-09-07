@@ -11,6 +11,9 @@
  */
 package com.slt.concurrency.mashibing2019.juc.c_017_MoreAboutSync;
 
+/**
+ * 不要用string类型 作为锁对象
+ */
 public class DoNotLockString {
 	
 	String s1 = "Hello";

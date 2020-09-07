@@ -7,6 +7,10 @@ package com.slt.concurrency.mashibing2019.juc.c_009;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * synchronized
+ * ø…÷ÿ»Î
+ */
 public class T {
 	synchronized void m1() {
 		System.out.println("m1 start");

@@ -10,6 +10,13 @@ package com.slt.concurrency.mashibing2019.juc.c_011;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 程序执行过程中，如果发生异常，默认锁会被释放。
+ * 例如在web中 多个servlet处理一个共同的资源，如果一个线程中抛出异常，那么
+ * 其他线程有可能进入同步代码块。有可能访问到异常产生时的数据。
+ *
+ * 需要非常小心处理同步代码中的异常
+ */
 public class T {
 	int count = 0;
 	synchronized void m() {

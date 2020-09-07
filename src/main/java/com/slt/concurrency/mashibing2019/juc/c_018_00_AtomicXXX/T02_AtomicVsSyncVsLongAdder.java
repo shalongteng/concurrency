@@ -4,6 +4,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 
+/**
+ * LongAdder
+ */
 public class T02_AtomicVsSyncVsLongAdder {
     static long count2 = 0L;
     static AtomicLong count1 = new AtomicLong(0L);

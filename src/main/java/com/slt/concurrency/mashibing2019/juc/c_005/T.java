@@ -7,7 +7,7 @@ package com.slt.concurrency.mashibing2019.juc.c_005;
 
 public class T implements Runnable {
 
-	private /*volatile*/ int count = 100;
+	private /*volatile*/ int count = 10000;
 	
 	public /*synchronized*/ void run() { 
 		count--;
@@ -16,7 +16,7 @@ public class T implements Runnable {
 	
 	public static void main(String[] args) {
 		T t = new T();
-		for(int i=0; i<100; i++) {
+		for(int i=0; i<10000; i++) {
 			new Thread(t, "THREAD" + i).start();
 		}
 	}

@@ -4,6 +4,10 @@ import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * phase ½×¶Î
+ *
+ */
 public class T08_TestPhaser {
     static Random r = new Random();
     static MarriagePhaser phaser = new MarriagePhaser();

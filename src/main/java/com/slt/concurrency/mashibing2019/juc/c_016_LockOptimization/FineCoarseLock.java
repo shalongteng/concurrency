@@ -8,7 +8,10 @@ package com.slt.concurrency.mashibing2019.juc.c_016_LockOptimization;
 
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * 锁的细化
+ * 锁的粗化
+ */
 public class FineCoarseLock {
 	
 	int count = 0;

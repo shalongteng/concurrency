@@ -9,8 +9,9 @@ package com.slt.concurrency.mashibing2019.juc.c_004;
 public class T {
 
 	private static int count = 10;
-	
-	public synchronized static void m() { //这里等同于synchronized(FineCoarseLock.class)
+
+	//这里等同于synchronized(T.class)
+	public synchronized static void m() {
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}

@@ -3,11 +3,14 @@ package com.slt.concurrency.mashibing2019.juc.c_020;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
+/**
+ *
+ */
 public class T07_TestCyclicBarrier {
     public static void main(String[] args) {
         //CyclicBarrier barrier = new CyclicBarrier(20);
 
-        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("满人"));
+        CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("满人，发车"));
 
         /*CyclicBarrier barrier = new CyclicBarrier(20, new Runnable() {
             @Override
