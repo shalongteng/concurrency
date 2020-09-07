@@ -9,9 +9,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 /**
- * @ProjectName: concurrency
- * @Package: com.slt.concurrency
- * @ClassName: ConcurrencyTest
  * @Author: shalongteng
  * @Description: 使用代码模拟并发
  * @Date: 2019-12-12 22:26
