@@ -5,20 +5,26 @@
 
 package com.slt.concurrency.mashibing2019.juc.c_005;
 
+/**
+ *
+ */
 public class T implements Runnable {
 
 	private /*volatile*/ int count = 10000;
-	
-	public /*synchronized*/ void run() { 
+
+	@Override
+	public /*synchronized*/ void run() {
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws InterruptedException {
 		T t = new T();
 		for(int i=0; i<10000; i++) {
-			new Thread(t, "THREAD" + i).start();
+			Thread thread = new Thread(t, "THREAD" + i);
+			thread.start();
+			thread.join();
 		}
 	}
-	
+
 }

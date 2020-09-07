@@ -1,5 +1,9 @@
 package com.slt.concurrency.mashibing2019.juc.c_000;
 
+/**
+ *  NEW,RUNNABLE,BLOCKED,WAITING,
+ *  TIMED_WAITING,TERMINATED;
+ */
 public class T04_ThreadState {
 
     static class MyThread extends Thread {

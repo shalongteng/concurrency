@@ -1,5 +1,7 @@
 package com.slt.concurrency.book1.ch2.group;
-
+/**
+ *  ThreadGroup
+ */
 public class ThreadGroupStop implements Runnable{
 	public static void main(String[] args) throws InterruptedException {
 		ThreadGroup tg=new ThreadGroup("PrintGroup");

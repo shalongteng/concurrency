@@ -4,9 +4,9 @@
  * @author mashibing
  */
 
-package com.slt.concurrency.mashibing2019.juc.c_004;
+package com.slt.concurrency.mashibing2019.juc.c_001_Synchronized;
 
-public class T {
+public class Synchronized04 {
 
 	private static int count = 10;
 
@@ -15,9 +15,9 @@ public class T {
 		count--;
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}
-	
+
 	public static void mm() {
-		synchronized(T.class) { //考虑一下这里写synchronized(this)是否可以？
+		synchronized(Synchronized04.class) { //考虑一下这里写synchronized(this)是否可以？
 			count --;
 		}
 	}

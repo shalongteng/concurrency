@@ -1,5 +1,10 @@
 package com.slt.concurrency.mashibing2019.juc.c_000;
 
+/**
+ *   继承Thread类
+ *   实现Runnabale
+ *   jdk8以后 lambda表达式
+ */
 public class T02_HowToCreateThread {
     static class MyThread extends Thread {
         @Override

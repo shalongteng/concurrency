@@ -3,10 +3,13 @@ package com.slt.concurrency.mashibing2019.juc.c_000;
 public class T03_Sleep_Yield_Join {
     public static void main(String[] args) {
 //        testSleep();
-//        testYield();
-        testJoin();
+        testYield();
+//        testJoin();
     }
 
+    /**
+     * 这个是方法调用，所以main线程必须等待这个线程执行完毕才能结束
+     */
     static void testSleep() {
         new Thread(()->{
             for(int i=0; i<100; i++) {

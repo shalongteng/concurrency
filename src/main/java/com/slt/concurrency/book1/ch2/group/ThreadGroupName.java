@@ -1,5 +1,8 @@
 package com.slt.concurrency.book1.ch2.group;
 
+/**
+ *  ThreadGroup
+ */
 public class ThreadGroupName implements Runnable {
 	public static void main(String[] args) {
 		ThreadGroup tg = new ThreadGroup("PrintGroup");

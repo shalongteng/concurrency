@@ -2,6 +2,10 @@ package com.slt.concurrency.mashibing2019.juc.c_000;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 线程
+ *  程序的执行路径
+ */
 public class T01_WhatIsThread {
     private static class T1 extends Thread {
         @Override
