@@ -7,17 +7,14 @@ import org.junit.Test;
  * 查看最终结果是否为0；
  */
 public class SynchronizedTest {
-    public static int count = 0;
+    public static int count = 10000;
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 10000; i++) {
             Thread thread = new Thread(() -> {
-                for (int j = 0; j < 1000; j++) {
-                    count++;
-                }
+                    count--;
             });
             thread.start();
-            thread.join();
         }
         System.out.println(count);
     }

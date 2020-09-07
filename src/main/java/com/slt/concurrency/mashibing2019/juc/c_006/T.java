@@ -5,21 +5,28 @@
 
 package com.slt.concurrency.mashibing2019.juc.c_006;
 
+/**
+ * synchronized
+ */
 public class T implements Runnable {
 
 	private int count = 10;
-	
-	public synchronized void run() { 
-		count--;
+
+	/**
+	 * ÐèÒªÄÃµ½ this
+	 */
+	public /*synchronized */ void run() {
+		synchronized(this){
+			count--;
+		}
 		System.out.println(Thread.currentThread().getName() + " count = " + count);
 	}
-	
+
 	public static void main(String[] args) {
-		
 		for(int i=0; i<5; i++) {
 			T t = new T();
 			new Thread(t, "THREAD" + i).start();
 		}
 	}
-	
+
 }
