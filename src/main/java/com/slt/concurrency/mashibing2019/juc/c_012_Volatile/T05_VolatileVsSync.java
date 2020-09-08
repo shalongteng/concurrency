@@ -7,11 +7,13 @@ package com.slt.concurrency.mashibing2019.juc.c_012_Volatile;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 保证线程安全 需要synchronized关键字
+ */
 public class T05_VolatileVsSync {
 	/*volatile*/ int count = 0;
 
-	synchronized void m() { 
+	synchronized void m() {
 		for (int i = 0; i < 10000; i++)
 			count++;
 	}

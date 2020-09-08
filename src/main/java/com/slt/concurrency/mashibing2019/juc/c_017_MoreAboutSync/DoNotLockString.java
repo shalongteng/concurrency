@@ -4,33 +4,35 @@
  * 这种情况还会发生比较诡异的现象，比如你用到了一个类库，在该类库中代码锁定了字符串“Hello”，
  * 但是你读不到源码，所以你在自己的代码中也锁定了"Hello",这时候就有可能发生非常诡异的死锁阻塞，
  * 因为你的程序和你用到的类库不经意间使用了同一把锁
- * 
+ *
  * jetty
- * 
+ *
  * @author mashibing
  */
 package com.slt.concurrency.mashibing2019.juc.c_017_MoreAboutSync;
 
 /**
  * 不要用string类型 作为锁对象
+ * 两个String的值一致时指向的地址是一致的，其实两个线程锁的是同一个对象。而在实际工作中，
+ * String值相同的情况时有发生，而出现问题有不容易发现。
  */
 public class DoNotLockString {
-	
+
 	String s1 = "Hello";
 	String s2 = "Hello";
 
 	void m1() {
 		synchronized(s1) {
-			
-		}
-	}
-	
-	void m2() {
-		synchronized(s2) {
-			
+
 		}
 	}
 
-	
+	void m2() {
+		synchronized(s2) {
+
+		}
+	}
+
+
 
 }
