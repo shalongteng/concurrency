@@ -3,6 +3,9 @@ dontinline,*.*_avgt_jmhStub
 dontinline,*.*_sample_jmhStub
 dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
+inline,com/slt/concurrency/book1/ch3/jmh/JMHSample_01_HelloWorld.wellHelloThere
+inline,com/slt/concurrency/book1/ch3/jmh/JMHSample_03_States.measureShared
+inline,com/slt/concurrency/book1/ch3/jmh/JMHSample_03_States.measureUnshared
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.bigConcurrentListWrite
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.bigCopyOnWriteWrite
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.concurrentListGet
@@ -12,3 +15,10 @@ inline,com/slt/concurrency/book1/ch3/jmh/ListTest.copyOnWriteSize
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.setup
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.smallConcurrentListWrite
 inline,com/slt/concurrency/book1/ch3/jmh/ListTest.smallCopyOnWriteWrite
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.concurrentHashMapGet
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.concurrentHashMapSize
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.hashMapGet
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.hashMapSize
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.setup
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.syncHashMapGet
+inline,com/slt/concurrency/book1/ch3/jmh/MapTest.syncHashMapSize
