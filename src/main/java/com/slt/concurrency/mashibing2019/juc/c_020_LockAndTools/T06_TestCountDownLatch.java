@@ -2,6 +2,9 @@ package com.slt.concurrency.mashibing2019.juc.c_020_LockAndTools;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 使用join和 使用countdownlatch 都可以达到同样效果
+ */
 public class T06_TestCountDownLatch {
     public static void main(String[] args) {
         usingJoin();
@@ -15,7 +18,9 @@ public class T06_TestCountDownLatch {
         for(int i=0; i<threads.length; i++) {
             threads[i] = new Thread(()->{
                 int result = 0;
-                for(int j=0; j<10000; j++) result += j;
+                for(int j=0; j<10000; j++){
+                    result += j;
+                }
                 latch.countDown();
             });
         }
@@ -39,7 +44,8 @@ public class T06_TestCountDownLatch {
         for(int i=0; i<threads.length; i++) {
             threads[i] = new Thread(()->{
                 int result = 0;
-                for(int j=0; j<10000; j++) result += j;
+                for(int j=0; j<10000; j++)
+                    result += j;
             });
         }
 

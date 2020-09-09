@@ -20,11 +20,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * lockInterruptibly
+ */
 public class T04_ReentrantLock4 {
-
 	public static void main(String[] args) {
 		Lock lock = new ReentrantLock();
-
 
 		Thread t1 = new Thread(()->{
 			try {
@@ -42,8 +43,8 @@ public class T04_ReentrantLock4 {
 
 		Thread t2 = new Thread(()->{
 			try {
-				//lock.lock();
-				lock.lockInterruptibly(); //���Զ�interrupt()����������Ӧ
+				//lock.lock(); 线程加锁阻塞以后，可以被中断信号 中断
+				lock.lockInterruptibly(); //interrupt() 可被中断
 				System.out.println("t2 start");
 				TimeUnit.SECONDS.sleep(5);
 				System.out.println("t2 end");
@@ -60,7 +61,7 @@ public class T04_ReentrantLock4 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		t2.interrupt(); //����߳�2�ĵȴ�
+		t2.interrupt(); //发出中断信号
 
 	}
 }

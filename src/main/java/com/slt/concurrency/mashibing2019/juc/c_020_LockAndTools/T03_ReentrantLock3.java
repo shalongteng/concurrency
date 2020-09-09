@@ -16,6 +16,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * tryLock()
+ * tryLock(5, TimeUnit.SECONDS)
+ * 尝试获取锁
+ */
 public class T03_ReentrantLock3 {
 	Lock lock = new ReentrantLock();
 
@@ -35,9 +40,7 @@ public class T03_ReentrantLock3 {
 	}
 
 	/**
-	 * ʹ��tryLock���г�������������������񣬷�����������ִ��
-	 * ���Ը���tryLock�ķ���ֵ���ж��Ƿ�����
-	 * Ҳ����ָ��tryLock��ʱ�䣬����tryLock(time)�׳��쳣������Ҫע��unclock�Ĵ�������ŵ�finally��
+	 * tryLock 尝试获取锁
 	 */
 	void m2() {
 		/*

@@ -20,14 +20,17 @@ package com.slt.concurrency.mashibing2019.juc.c_020_LockAndTools;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * new ReentrantLock(true) 公平锁
+ */
 public class T05_ReentrantLock5 extends Thread {
 
-	private static ReentrantLock lock=new ReentrantLock(true); //����Ϊtrue��ʾΪ��ƽ������Ա�������
+	private static ReentrantLock lock=new ReentrantLock(true);
     public void run() {
         for(int i=0; i<100; i++) {
             lock.lock();
             try{
-                System.out.println(Thread.currentThread().getName()+"�����");
+                System.out.println(Thread.currentThread().getName()+"线程");
             }finally{
                 lock.unlock();
             }

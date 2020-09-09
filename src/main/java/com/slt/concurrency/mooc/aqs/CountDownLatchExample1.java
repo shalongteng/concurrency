@@ -8,11 +8,9 @@ import java.util.concurrent.Executors;
 
 @Slf4j
 public class CountDownLatchExample1 {
-
     private final static int threadCount = 200;
 
     public static void main(String[] args) throws Exception {
-
         ExecutorService exec = Executors.newCachedThreadPool();
 
         final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
