@@ -14,6 +14,7 @@ public class AtomicReferenceDemo {
                         while(true){
                             Integer m=money.get();
                             if(m<20){
+                                //如果己经被其他用户处理，那么当前线程就会失败。
                                 if(money.compareAndSet(m, m+20)){
                                     System.out.println("余额小于20元，充值成功，余额:"+money.get()+"元");
                                     break;

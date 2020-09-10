@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class RndMultiThread {
+    //定义了每个线程要产生的随机数数量；
     public static final int GEN_COUNT = 10000000;
     public static final int THREAD_COUNT = 4;
     static ExecutorService exe = Executors.newFixedThreadPool(THREAD_COUNT);

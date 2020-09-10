@@ -5,9 +5,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * 使用生产者和消费者的客户端
+ */
 public class PCMain {
-	public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
+        //建立缓冲区
         BlockingQueue<PCData> queue = new LinkedBlockingQueue<PCData>(10);
+
         Producer producer1 = new Producer(queue);
         Producer producer2 = new Producer(queue);
         Producer producer3 = new Producer(queue);
@@ -21,7 +26,7 @@ public class PCMain {
         service.execute(consumer1);
         service.execute(consumer2);
         service.execute(consumer3);
-        Thread.sleep(10 * 1000);
+        Thread.sleep(20 * 1000);
         producer1.stop();
         producer2.stop();
         producer3.stop();
