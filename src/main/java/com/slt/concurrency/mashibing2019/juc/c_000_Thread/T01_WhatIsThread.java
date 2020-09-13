@@ -22,7 +22,7 @@ public class T01_WhatIsThread {
     }
 
     public static void main(String[] args) {
-        //new T1().run();
+        //new T1().run(); //这是方法调用
         new T1().start();
         for(int i=0; i<10; i++) {
             try {
