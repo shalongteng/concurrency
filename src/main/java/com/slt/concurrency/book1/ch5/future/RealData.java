@@ -7,6 +7,10 @@ public class RealData implements Callable<String> {
     public RealData(String para){
     	this.para=para;
     }
+
+    /**
+     *  call（）方法会构造我们需要的真实数据井返回
+     */
 	@Override
 	public String call() throws Exception {
 

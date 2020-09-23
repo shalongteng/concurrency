@@ -1,5 +1,8 @@
 package com.slt.concurrency.book1.ch5.simplefuture;
 
+/**
+ * future模式
+ */
 public class Main {
     public static void main(String[] args) {
         Client client = new Client();
@@ -11,7 +14,7 @@ public class Main {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
-            //使用真实的数据
+        //使用真实的数据
         System.out.println("数据 = " + data.getResult());
     }
 }

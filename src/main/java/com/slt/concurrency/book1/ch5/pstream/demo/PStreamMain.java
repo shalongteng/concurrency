@@ -21,7 +21,7 @@ public class PStreamMain {
                 msg.i = i;
                 msg.j = j;
                 msg.orgStr = "((" + i + "+" + j + ")*" + i + ")/2";
-                Plus.bq.add(msg);
+                Plus.blockingQueue.add(msg);
             }
         }
     }

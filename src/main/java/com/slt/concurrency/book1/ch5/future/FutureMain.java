@@ -8,7 +8,7 @@ import java.util.concurrent.FutureTask;
 public class FutureMain {
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         //构造FutureTask
-        FutureTask<String> future = new FutureTask<String>(new RealData("a"));
+        FutureTask<String> future = new FutureTask<>(new RealData("a"));
         ExecutorService executor = Executors.newFixedThreadPool(1);
         //执行FutureTask，相当于上例中的 client.request("a") 发送请求
         //在这里开启线程进行RealData的call()执行
@@ -16,7 +16,7 @@ public class FutureMain {
 
         System.out.println("请求完毕");
         try {
-        //这里依然可以做额外的数据操作，这里使用sleep代替其他业务逻辑的处理
+            //这里依然可以做额外的数据操作，这里使用sleep代替其他业务逻辑的处理
             Thread.sleep(2000);
         } catch (InterruptedException e) {
         }
