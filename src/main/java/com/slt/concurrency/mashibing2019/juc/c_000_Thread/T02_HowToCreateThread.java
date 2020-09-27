@@ -21,8 +21,11 @@ public class T02_HowToCreateThread {
     }
 
     public static void main(String[] args) {
+        //第一种
         new MyThread().start();
+        //第二种
         new Thread(new MyRun()).start();
+        //第三种
         new Thread(()->{
             System.out.println("Hello Lambda!");
         }).start();
@@ -30,4 +33,7 @@ public class T02_HowToCreateThread {
 
 }
 
-//请你告诉我启动线程的三种方式 1：Thread 2: Runnable 3:Executors.newCachedThrad
+//请你告诉我启动线程的三种方式
+// 1：Thread
+// 2: Runnable
+// 3:Executors.newCachedThrad
