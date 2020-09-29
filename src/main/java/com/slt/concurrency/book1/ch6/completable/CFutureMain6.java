@@ -5,9 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * 完成普通future的工作
- *
  * thenCombine 合并结果
- *
  * @author Geym
  *
  */
