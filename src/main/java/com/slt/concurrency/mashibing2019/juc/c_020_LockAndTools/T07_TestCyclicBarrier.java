@@ -11,6 +11,7 @@ public class T07_TestCyclicBarrier {
     public static void main(String[] args) {
         //CyclicBarrier barrier = new CyclicBarrier(20);
 
+        //当栅栏满了，触发一个动作
         CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("满人，发车"));
 
         /*CyclicBarrier barrier = new CyclicBarrier(20, new Runnable() {

@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.CountDownLatch2;
+package com.slt.concurrency.myTest.CountDownLatch2;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;

@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.CountDownLatch;
+package com.slt.concurrency.myTest.CountDownLatch;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -15,7 +15,7 @@ import java.util.concurrent.CountDownLatch;
 
  * @Auther: shalongteng
  * @Date: 2019-12-08
- * @Description: 
+ * @Description:
  */
 public class CountDownLatchTest {
     public static void main(String[] args) throws InterruptedException {
@@ -23,7 +23,7 @@ public class CountDownLatchTest {
         Employee a = new Employee("A", 3000,countDownLatch);
         Employee b = new Employee("B", 3000,countDownLatch);
         Employee c = new Employee("C", 4000,countDownLatch);
-        
+
         b.start();
         c.start();
         //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行

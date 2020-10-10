@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.Semaphore;
+package com.slt.concurrency.myTest.Semaphore;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

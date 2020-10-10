@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.CountDownLatch;
+package com.slt.concurrency.myTest.CountDownLatch;
 
 import java.util.concurrent.CountDownLatch;
 

@@ -24,7 +24,7 @@ public class T06_TestCountDownLatch {
                 latch.countDown();
             });
         }
-
+        //所有的线程开始
         for (int i = 0; i < threads.length; i++) {
             threads[i].start();
         }

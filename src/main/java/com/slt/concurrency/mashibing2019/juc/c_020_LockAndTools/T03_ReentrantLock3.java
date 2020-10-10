@@ -57,14 +57,21 @@ public class T03_ReentrantLock3 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			if(locked) lock.unlock();
+			if(locked)
+				lock.unlock();
 		}
 
 	}
 
 	public static void main(String[] args) {
 		T03_ReentrantLock3 rl = new T03_ReentrantLock3();
+		/**
+		 * 方法引用是 Java 8 中提出的用来简化 lambda 表达式的一种手段。它通过类名和方法名来定位一个静态方法或者实例方法。
+		 */
 		new Thread(rl::m1).start();
+//		new Thread(()->{
+//			rl.m1();
+//		}).start();
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {

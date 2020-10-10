@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.join;
+package com.slt.concurrency.myTest.join;
 
 public class JoinTest2 {
     /**

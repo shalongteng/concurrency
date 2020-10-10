@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.join;
+package com.slt.concurrency.myTest.join;
 /**
  * @ProjectName: concurrency
  * @ClassName: Employee
@@ -17,7 +17,7 @@ public class Employee extends Thread{
         this.employeeName = employeeName;
         this.time = time;
     }
-    
+
     @Override
     public void run() {
         try {

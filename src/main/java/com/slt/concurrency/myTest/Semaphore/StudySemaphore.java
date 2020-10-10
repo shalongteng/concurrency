@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.Semaphore;
+package com.slt.concurrency.myTest.Semaphore;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -23,7 +23,7 @@ public class StudySemaphore {
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        
+
         //信号量，只允许 3个线程同时访问
         Semaphore semaphore = new Semaphore(3);
 

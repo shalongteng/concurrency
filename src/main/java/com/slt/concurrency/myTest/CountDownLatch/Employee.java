@@ -1,4 +1,4 @@
-package com.slt.concurrency.myTest.jdk.CountDownLatch;
+package com.slt.concurrency.myTest.CountDownLatch;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -6,7 +6,7 @@ public class Employee extends Thread{
 
     private String employeeName;
     private long time;
-    
+
     private CountDownLatch countDownLatch;
 
     public Employee(String employeeName,long time, CountDownLatch countDownLatch){
@@ -14,7 +14,7 @@ public class Employee extends Thread{
         this.time = time;
         this.countDownLatch = countDownLatch;
     }
-    
+
     @Override
     public void run() {
         try {
@@ -25,6 +25,6 @@ public class Employee extends Thread{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 }

@@ -3,8 +3,8 @@ package com.slt.concurrency.mashibing2019.juc.c_000_Thread;
 public class T03_Sleep_Yield_Join {
     public static void main(String[] args) {
 //        testSleep();
-        testYield();
-//        testJoin();
+//        testYield();
+        testJoin();
     }
 
     /**
@@ -47,7 +47,7 @@ public class T03_Sleep_Yield_Join {
             for(int i=0; i<100; i++) {
                 System.out.println("A" + i);
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                     //TimeUnit.Milliseconds.sleep(500)
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -64,9 +64,9 @@ public class T03_Sleep_Yield_Join {
             }
 
             for(int i=0; i<100; i++) {
-                System.out.println("A" + i);
+                System.out.println("B" + i);
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                     //TimeUnit.Milliseconds.sleep(500)
                 } catch (InterruptedException e) {
                     e.printStackTrace();
