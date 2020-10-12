@@ -54,6 +54,14 @@
         exchanger.exchange(s);
     
 #3、LOCK
+    Conditoin 条件
+        与Lock配合可以实现等待/通知模式
+        Condition producer = lock.newCondition();  生成一个等待队列  
+        Condition consumer = lock.newCondition();  一个condition就是一个等待队列
+        
+        producer.await();
+        consumer.signalAll();
+    
     ReentrantLock 可重入锁
         底层基于CAS
         
@@ -65,3 +73,58 @@
     readWriteLock:读写锁  适合读多写少的场景
         读锁 共享锁 readWriteLock.readLock();
         写锁 排它锁 readWriteLock.writeLock();
+#4、LockSuppor t 锁支持
+    LockSupport.park(); 
+        park 停车 当前线程停止，阻塞了
+    LockSupport.unpark(t); 
+        叫醒某个指定的线程，继续运行
+#5、AQS（CLH）
+    volatile int state
+        state由他的子类来实现
+        ReentrantLock中 用它表示加锁和解锁 0表示无锁 >1表示有锁
+    
+    AQS中 有一个Node双向链表 队列，每一个node存的是线程（Thread）    
+    
+    维护了一个队列的同步器框架
+        
+    varHandle
+        普通属性也可进行原子操作。
+        比反射快，直接操纵二进制码。
+#6、ThreadLocal
+    set方法
+        set(ThreadLocal,value)
+        ThreadLocalMap map = getMap(t);
+        map.set(this, value);
+        设置到了当前线程的map
+    get方法
+         ThreadLocalMap map = getMap(currentThread);
+         if (map != null) {
+            ThreadLocalMap.Entry e = map.getEntry(this);
+            if (e != null) {
+                T result = (T)e.value;
+                return result;
+            }，。
+         }
+    ThreadLocal使用：spring声明式事务
+        把connection 放到线程ThreadLocal里，以后在拿connection时候不从线程池中拿。
+        需要保证是同一个connection 对象才能保证事务。
+#7、强软弱须
+    StrongReference
+        
+    SoftReference
+        如果内存空间不足了，就会回收这些对象的内存。
+        
+        软引用的作用：软引用可用来实现内存敏感的高速缓存。
+        
+    WeakReference
+        垃圾回收时候，不管当前内存空间足够与否，都会回收它的内存。
+        
+        一般用在容器里
+        
+    PhantomReference
+        如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。
+       
+        虚引用主要用来跟踪对象被垃圾回收器回收的活动。虚引用与软引用和弱引用的一个区别在于：
+        虚引用必须和引用队列（ReferenceQueue）联合使用。
+        
+        管理堆外内存

@@ -38,11 +38,11 @@ public class T02_WithVolatile {
 				c.add(new Object());
 				System.out.println("add " + i);
 				
-				/*try {
+				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}*/
+				}
 			}
 		}, "t1").start();
 		
