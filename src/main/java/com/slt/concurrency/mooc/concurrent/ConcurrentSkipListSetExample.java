@@ -30,14 +30,14 @@ public class ConcurrentSkipListSetExample {
                     update(count);
                     semaphore.release();
                 } catch (Exception e) {
-                    log.error("exception", e);
+//                    log.error("exception", e);
                 }
                 countDownLatch.countDown();
             });
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size:{}", set.size());
+//        log.info("size:{}", set.size());
     }
 
     private static void update(int i) {

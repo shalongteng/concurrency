@@ -29,14 +29,14 @@ public class CopyOnWriteArrayListExample {
                     update(count);
                     semaphore.release();
                 } catch (Exception e) {
-                    log.error("exception", e);
+//                    log.error("exception", e);
                 }
                 countDownLatch.countDown();
             });
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size:{}", list.size());
+//        log.info("size:{}", list.size());
     }
 
     private static void update(int i) {
