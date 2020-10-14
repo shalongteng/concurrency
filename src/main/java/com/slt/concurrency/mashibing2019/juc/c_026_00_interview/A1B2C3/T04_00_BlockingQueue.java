@@ -30,7 +30,6 @@ public class T04_00_BlockingQueue {
         }, "t1").start();
 
         new Thread(() -> {
-
             for(char c : aC) {
                 try {
                     q1.take();

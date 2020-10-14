@@ -10,8 +10,6 @@ public class T07_00_sync_wait_notify {
     public static void main(String[] args) {
         final Object o = new Object();
 
-
-
         char[] aI = "1234567".toCharArray();
         char[] aC = "ABCDEFG".toCharArray();
 

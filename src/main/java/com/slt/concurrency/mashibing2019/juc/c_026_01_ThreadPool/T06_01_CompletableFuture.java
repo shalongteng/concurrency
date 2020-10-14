@@ -31,13 +31,15 @@ public class T06_01_CompletableFuture {
         CompletableFuture<Double> futureTB = CompletableFuture.supplyAsync(()->priceOfTB());
         CompletableFuture<Double> futureJD = CompletableFuture.supplyAsync(()->priceOfJD());
 
+        /**
+         * 这些任务 全部完成才可以
+         */
         CompletableFuture.allOf(futureTM, futureTB, futureJD).join();
 
         CompletableFuture.supplyAsync(()->priceOfTM())
                 .thenApply(String::valueOf)
                 .thenApply(str-> "price " + str)
                 .thenAccept(System.out::println);
-
 
         end = System.currentTimeMillis();
         System.out.println("use completable future! " + (end - start));

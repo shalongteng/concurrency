@@ -6,9 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class T05_LinkedBlockingQueue {
-
 	static BlockingQueue<String> strs = new LinkedBlockingQueue<>();
-
 	static Random r = new Random();
 
 	public static void main(String[] args) {

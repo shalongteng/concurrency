@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 
 public class T03_Callable {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Callable<String> c = new Callable() {
+        Callable<String> callable = new Callable() {
             @Override
             public String call() throws Exception {
                 return "Hello Callable";
@@ -16,9 +16,9 @@ public class T03_Callable {
         };
 
         ExecutorService service = Executors.newCachedThreadPool();
-        Future<String> future = service.submit(c); //Òì²½
+        Future<String> future = service.submit(callable); //Òì²½
 
-        System.out.println(future.get());//×èÈû
+        System.out.println(future.get());//×èÈû.0
 
         service.shutdown();
     }

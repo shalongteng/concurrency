@@ -16,6 +16,7 @@ public class T09_00_lock_condition {
         char[] aC = "ABCDEFG".toCharArray();
 
         Lock lock = new ReentrantLock();
+        //conditionT2 本质就是一个等待队列
         Condition conditionT1 = lock.newCondition();
         Condition conditionT2 = lock.newCondition();
 
