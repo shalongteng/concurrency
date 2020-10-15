@@ -1,42 +1,44 @@
 # ThreadPoolExecutor源码解析
-
+    多线程高并发视频八
 ### 1、常用变量的解释
 
 ```java
-// 1. `ctl`，可以看做一个int类型的数字，高3位表示线程池状态，低29位表示worker数量
-private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
-// 2. `COUNT_BITS`，`Integer.SIZE`为32，所以`COUNT_BITS`为29
-private static final int COUNT_BITS = Integer.SIZE - 3;
-// 3. `CAPACITY`，线程池允许的最大线程数。1左移29位，然后减1，即为 2^29 - 1
-private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
+public class ThreadPoolExecutor extends AbstractExecutorService {
+    // 1. `ctl`，可以看做一个int类型的数字，高3位表示线程池状态，低29位表示worker数量
+    private final AtomicInteger ctl = new AtomicInteger(ctlOf(RUNNING, 0));
+    // 2. `COUNT_BITS`，`Integer.SIZE`为32，所以`COUNT_BITS`为29
+    private static final int COUNT_BITS = Integer.SIZE - 3;
+    // 3. `CAPACITY`，线程池允许的最大线程数。1左移29位，然后减1，即为 2^29 - 1
+    private static final int CAPACITY   = (1 << COUNT_BITS) - 1;
 
-// runState is stored in the high-order bits
-// 4. 线程池有5种状态，按大小排序如下：RUNNING < SHUTDOWN < STOP < TIDYING < TERMINATED
-private static final int RUNNING    = -1 << COUNT_BITS;
-private static final int SHUTDOWN   =  0 << COUNT_BITS;
-private static final int STOP       =  1 << COUNT_BITS;
-private static final int TIDYING    =  2 << COUNT_BITS;
-private static final int TERMINATED =  3 << COUNT_BITS;
+    // runState is stored in the high-order bits
+    // 4. 线程池有5种状态，按大小排序如下：RUNNING < SHUTDOWN < STOP < TIDYING < TERMINATED
+    private static final int RUNNING    = -1 << COUNT_BITS;
+    private static final int SHUTDOWN   =  0 << COUNT_BITS;
+    private static final int STOP       =  1 << COUNT_BITS;
+    private static final int TIDYING    =  2 << COUNT_BITS;
+    private static final int TERMINATED =  3 << COUNT_BITS;
 
-// Packing and unpacking ctl
-// 5. `runStateOf()`，获取线程池状态，通过按位与操作，低29位将全部变成0
-private static int runStateOf(int c)     { return c & ~CAPACITY; }
-// 6. `workerCountOf()`，获取线程池worker数量，通过按位与操作，高3位将全部变成0
-private static int workerCountOf(int c)  { return c & CAPACITY; }
-// 7. `ctlOf()`，根据线程池状态和线程池worker数量，生成ctl值
-private static int ctlOf(int rs, int wc) { return rs | wc; }
+    // Packing and unpacking ctl
+    // 5. `runStateOf()`，获取线程池状态，通过按位与操作，低29位将全部变成0
+    private static int runStateOf(int c)     { return c & ~CAPACITY; }
+    // 6. `workerCountOf()`，获取线程池worker数量，通过按位与操作，高3位将全部变成0
+    private static int workerCountOf(int c)  { return c & CAPACITY; }
+    // 7. `ctlOf()`，根据线程池状态和线程池worker数量，生成ctl值
+    private static int ctlOf(int rs, int wc) { return rs | wc; }
 
-/*
- * Bit field accessors that don't require unpacking ctl.
- * These depend on the bit layout and on workerCount being never negative.
- */
-// 8. `runStateLessThan()`，线程池状态小于xx
-private static boolean runStateLessThan(int c, int s) {
-    return c < s;
-}
-// 9. `runStateAtLeast()`，线程池状态大于等于xx
-private static boolean runStateAtLeast(int c, int s) {
-    return c >= s;
+    /*
+     * Bit field accessors that don't require unpacking ctl.
+     * These depend on the bit layout and on workerCount being never negative.
+     */
+    // 8. `runStateLessThan()`，线程池状态小于xx
+    private static boolean runStateLessThan(int c, int s) {
+        return c < s;
+    }
+    // 9. `runStateAtLeast()`，线程池状态大于等于xx
+    private static boolean runStateAtLeast(int c, int s) {
+        return c >= s;
+    }
 }
 ```
 
@@ -75,26 +77,7 @@ public ThreadPoolExecutor(int corePoolSize,
 public void execute(Runnable command) {
     if (command == null)
         throw new NullPointerException();
-    /*
-     * Proceed in 3 steps:
-     *
-     * 1. If fewer than corePoolSize threads are running, try to
-     * start a new thread with the given command as its first
-     * task.  The call to addWorker atomically checks runState and
-     * workerCount, and so prevents false alarms that would add
-     * threads when it shouldn't, by returning false.
-     *
-     * 2. If a task can be successfully queued, then we still need
-     * to double-check whether we should have added a thread
-     * (because existing ones died since last checking) or that
-     * the pool shut down since entry into this method. So we
-     * recheck state and if necessary roll back the enqueuing if
-     * stopped, or start a new thread if there are none.
-     *
-     * 3. If we cannot queue task, then we try to add a new
-     * thread.  If it fails, we know we are shut down or saturated
-     * and so reject the task.
-     */
+
     int c = ctl.get();
     // worker数量比核心线程数小，直接创建worker执行任务
     if (workerCountOf(c) < corePoolSize) {
@@ -134,8 +117,8 @@ private boolean addWorker(Runnable firstTask, boolean core) {
         int rs = runStateOf(c);
 
         // 这个条件写得比较难懂，我对其进行了调整，和下面的条件等价
-        // (rs > SHUTDOWN) || 
-        // (rs == SHUTDOWN && firstTask != null) || 
+        // (rs > SHUTDOWN) ||
+        // (rs == SHUTDOWN && firstTask != null) ||
         // (rs == SHUTDOWN && workQueue.isEmpty())
         // 1. 线程池状态大于SHUTDOWN时，直接返回false
         // 2. 线程池状态等于SHUTDOWN，且firstTask不为null，直接返回false
@@ -164,7 +147,7 @@ private boolean addWorker(Runnable firstTask, boolean core) {
                 continue retry;
             // 其他情况，直接内层循环进行自旋即可
             // else CAS failed due to workerCount change; retry inner loop
-        } 
+        }
     }
     boolean workerStarted = false;
     boolean workerAdded = false;
@@ -304,7 +287,7 @@ final void runWorker(Worker w) {
             } finally {
                 // 帮助gc
                 task = null;
-                // 已完成任务数加一 
+                // 已完成任务数加一
                 w.completedTasks++;
                 w.unlock();
             }
